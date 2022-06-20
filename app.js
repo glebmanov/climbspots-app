@@ -2,6 +2,12 @@ const https = require('https')
 const fs = require('fs')
 const path = require('path')
 
+const options = {
+  key: fs.readFileSync('cert/private.key'),
+  cert: fs.readFileSync('cert/certificate.crt'),
+  ca: fs.readFileSync('cert/certificate_ca.crt'),
+}
+
 const express = require('express')
 const config = require('config')
 
@@ -17,7 +23,7 @@ const PORT = config.get('port') || 5511
 
 const start = async () => {
   try {
-    https.createServer(app).listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+    https.createServer(options, app).listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
   } catch (e) {
     console.log('Server Error', e.message)
     process.exit(1)
