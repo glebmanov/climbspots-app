@@ -17,9 +17,10 @@ const app = express()
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'client', 'build')))
 
-  app.get('*', (_, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')))
-
-  app.use((req, res, next) => (!req.secure ? res.redirect(301, 'https://' + req.headers.host + req.url) : next()))
+  app.get('*', (req, res, next) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    return !req.secure ? res.redirect(301, 'https://' + req.headers.host + req.url) : next()
+  })
 }
 
 const PORT_HTTP = config.get('portHttp')
