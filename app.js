@@ -1,3 +1,4 @@
+const http = require('http')
 const https = require('https')
 const fs = require('fs')
 const path = require('path')
@@ -25,7 +26,8 @@ const PORT = config.get('port') || 5511
 
 const start = async () => {
   try {
-    https.createServer(options, app).listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+    http.createServer(app).listen(PORT_HTTP, () => console.log(`App has been started on port ${PORT_HTTP}...`))
+    https.createServer(options, app).listen(PORT_HTTPS, () => console.log(`App has been started on port ${PORT_HTTPS}...`))
   } catch (e) {
     console.log('Server Error', e.message)
     process.exit(1)
