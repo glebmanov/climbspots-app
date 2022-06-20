@@ -22,12 +22,15 @@ if (process.env.NODE_ENV === 'production') {
   app.use((req, res, next) => (!req.secure ? res.redirect(301, 'https://' + req.headers.host + req.url) : next()))
 }
 
-const PORT = config.get('port') || 5511
+const PORT_HTTP = config.get('portHttp')
+const PORT_HTTPS = config.get('portHttps')
 
 const start = async () => {
   try {
     http.createServer(app).listen(PORT_HTTP, () => console.log(`App has been started on port ${PORT_HTTP}...`))
-    https.createServer(options, app).listen(PORT_HTTPS, () => console.log(`App has been started on port ${PORT_HTTPS}...`))
+    https
+      .createServer(options, app)
+      .listen(PORT_HTTPS, () => console.log(`App has been started on port ${PORT_HTTPS}...`))
   } catch (e) {
     console.log('Server Error', e.message)
     process.exit(1)
