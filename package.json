@@ -1,0 +1,25 @@
+{
+  "name": "climbspots-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently -r \"npm run server\" \"npm run client\""
+  },
+  "author": "Gleb Manov <glebmanov@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.7",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.16"
+  }
+}

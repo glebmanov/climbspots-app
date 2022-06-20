@@ -1,0 +1,64 @@
+.weather {
+  height: 100%;
+  background-color: #f8f9fa;
+
+  thead {
+    position: sticky;
+    top: 0;
+  }
+
+  .weekday {
+    font-weight: 700;
+  }
+
+  .datetime {
+    white-space: pre;
+  } 
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.warning {
+  height: 100%;
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 575.98px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 11px;
+
+    td {
+      &:first-child {
+        padding-right: 3px;
+      }
+      &:nth-child(2) {
+        padding: 8px 6px;
+      }
+      &:nth-child(3) {
+        padding: 8px 6px;
+      }
+      &:nth-child(4) {
+        padding: 8px 6px;
+      }
+      &:nth-child(5) {
+        padding: 8px 6px;
+      }
+      &:last-child {
+        padding-left: 3px;
+      }
+    }
+
+    img {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+}

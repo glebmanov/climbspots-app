@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(45deg, #006bc6, #1ecafc);
+  font-family: 'Poppins';
+}
+
+p {
+  margin: 0;
+}
+
+.mybutton {
+  border: none;
+  color: #212529;
+  background: #ecedee;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover {
+    letter-spacing: 0.05em;
+  }
+
+  &.active {
+    background: #006bc6;
+  }
+}
