@@ -1,3 +1,4 @@
+const express = require('express')
 const http = require('http')
 const https = require('https')
 const fs = require('fs')
@@ -9,21 +10,19 @@ const options = {
   ca: fs.readFileSync('cert/certificate_ca.crt'),
 }
 
-const express = require('express')
 const config = require('config')
+const PORT_HTTP = config.get('portHttp')
+const PORT_HTTPS = config.get('portHttps')
 
 const app = express()
+
+app.use((req, res, next) => (req.secure ? next() : res.redirect(301, `https://${req.headers.host}${req.url}`)))
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/', express.static(path.join(__dirname, 'client', 'build')))
 
   app.get('*', (_, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')))
-
-  app.get('*', (req, res, next) => (!req.secure ? res.redirect(`https://${req.headers.host}${req.url}`) : next()))
 }
-
-const PORT_HTTP = config.get('portHttp')
-const PORT_HTTPS = config.get('portHttps')
 
 const start = async () => {
   try {
