@@ -12,7 +12,7 @@ const Spots = () => {
     <>
       {spots.map(({ id, name }) => (
         <Button
-          className='col-5 col-lg-12 mb-2 mx-lg-0 mx-1'
+          className='col-5 col-lg-12 mb-2 mx-lg-0 mx-1 btn-shadow'
           key={id}
           name={name}
           handler={setActiveSpotId}

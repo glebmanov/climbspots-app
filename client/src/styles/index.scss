@@ -18,6 +18,10 @@ p {
   text-transform: uppercase;
   transition: 0.5s;
 
+  &.btn-shadow {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.5);
+  }
+
   &:hover {
     letter-spacing: 0.05em;
     background-color: #025091;
