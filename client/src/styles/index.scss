@@ -2,7 +2,7 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(45deg, #006bc6, #1ecafc);
+  background: linear-gradient(135deg, #71C5EE, #025091);
   font-family: 'Poppins';
 }
 
@@ -20,9 +20,10 @@ p {
 
   &:hover {
     letter-spacing: 0.05em;
+    background-color: #025091;
   }
 
   &.active {
-    background: #006bc6;
+    background: #025091;
   }
 }
