@@ -6,6 +6,7 @@ SPA приложение показывает погоду в скалолазн
 Данные с публичного API от Weatherbit (RapidAPI).
 
 ## Стек
+- Express
 - React
 - Redux
 - Bootstrap
