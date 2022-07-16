@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Endpoints from '../components/Endpoints';
 import SpotWeatherUnit from '../components/SpotWeatherUnit';
 
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 
 const SpotWeather = () => {
   const data = useSelector(state => state.weather.data);
@@ -30,7 +30,7 @@ const SpotWeather = () => {
                 </thead>
                 <tbody>
                   {data.map(dataUnit => (
-                    <SpotWeatherUnit key={_.uniqueId()} dataUnit={dataUnit} />
+                    <SpotWeatherUnit key={uniqueId()} dataUnit={dataUnit} />
                   ))}
                 </tbody>
               </table>

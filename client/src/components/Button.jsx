@@ -6,7 +6,7 @@ const Button = ({ className, name, handler, value, isActive }) => {
 
   return (
     <button
-      className={isActive ? `btn btn-primary text-nowrap active ${className} mybutton` : `btn btn-primary text-nowrap ${className} mybutton`}
+      className={isActive ? `btn btn-primary text-nowrap active ${className} btn-cstm` : `btn btn-primary text-nowrap ${className} btn-cstm`}
       type='button'
       onClick={() => dispatch(handler(value))}
     >

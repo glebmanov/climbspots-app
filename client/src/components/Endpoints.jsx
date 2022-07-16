@@ -4,7 +4,7 @@ import { setEndpoint } from '../store/weatherSlice';
 
 import Button from './Button';
 
-import _ from 'lodash';
+import { uniqueId } from 'lodash';
 
 const Endpoints = () => {
   const currentEndpoint = useSelector(state => state.weather.endpoint);
@@ -18,7 +18,7 @@ const Endpoints = () => {
     <div className='endpoints d-flex flex-row btn-group col-md-6 col-12'>
       {endpoints.map(endpoint => (
         <Button
-          key={_.uniqueId()}
+          key={uniqueId()}
           name={endpoint.name}
           handler={setEndpoint}
           value={{ endpoint: endpoint.value }}
