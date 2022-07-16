@@ -1,5 +1,5 @@
 ### Badges
-[![Maintainability](https://api.codeclimate.com/v1/badges/47a2f1f258b2cfeaeaf1/maintainability)](https://codeclimate.com/github/glebmanov/climbspots/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/b2852df39d849bdcbc23/maintainability)](https://codeclimate.com/github/glebmanov/climbspots-app/maintainability)
 
 ## Climbspots
 SPA приложение показывает погоду в скалолазных районах Ленинградской области по трем параметрам (на ближайшие выходные, текущую и на 5 дней)
