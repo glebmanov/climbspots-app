@@ -1,3 +1,7 @@
+h1 {
+  padding: 0 80px;
+}
+
 .weather {
   height: 100%;
   background-color: $white-2;
@@ -34,6 +38,7 @@
 @include --mobile {
   h1 {
     font-size: 20px;
+    padding: 0 20px;
   }
 
   table {
