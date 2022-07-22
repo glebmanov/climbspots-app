@@ -1,18 +1,18 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react'
+import { useDispatch } from 'react-redux'
+
+import cn from 'classnames'
 
 const Button = ({ className, name, handler, value, isActive }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+
+  const classNames = cn(`btn btn-primary text-nowrap ${className} btn-cstm`, { active: isActive })
 
   return (
-    <button
-      className={isActive ? `btn btn-primary text-nowrap active ${className} btn-cstm` : `btn btn-primary text-nowrap ${className} btn-cstm`}
-      type='button'
-      onClick={() => dispatch(handler(value))}
-    >
+    <button className={classNames} type='button' onClick={() => dispatch(handler(value))}>
       <span>{name}</span>
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
