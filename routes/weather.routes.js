@@ -7,9 +7,7 @@ const router = Router()
 router.get('/weather', async (req, res) => {
   try {
     const { endpoint, lat, lon } = req.query
-    const response = await axios.request({
-      method: 'GET',
-      url: `https://weatherbit-v1-mashape.p.rapidapi.com/${endpoint}`,
+    const response = await axios.get(`https://weatherbit-v1-mashape.p.rapidapi.com/${endpoint}`, {
       params: { lat, lon, units: 'metric' },
       headers: {
         'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com',
