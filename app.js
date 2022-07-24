@@ -3,16 +3,17 @@ const http = require('http')
 const https = require('https')
 const fs = require('fs')
 const path = require('path')
-const config = require('config')
+const cors = require('cors')
 
 const app = express()
-const PORT_HTTP = config.get('portHttp')
-const PORT_HTTPS = config.get('portHttps')
 const options = {
   key: fs.readFileSync('cert/private.key'),
   cert: fs.readFileSync('cert/certificate.crt'),
   ca: fs.readFileSync('cert/certificate_ca.crt'),
 }
+
+app.use(cors())
+app.use('/api', require('./routes/weather.routes'))
 
 app.use((req, res, next) => (req.secure ? next() : res.redirect(301, `https://${req.headers.host}${req.url}`)))
 
@@ -24,10 +25,8 @@ if (process.env.NODE_ENV === 'production') {
 
 const start = async () => {
   try {
-    http.createServer(app).listen(PORT_HTTP, () => console.log(`App has been started on port ${PORT_HTTP}...`))
-    https
-      .createServer(options, app)
-      .listen(PORT_HTTPS, () => console.log(`App has been started on port ${PORT_HTTPS}...`))
+    http.createServer(app).listen(80, () => console.log(`App has been started on port 80...`))
+    https.createServer(options, app).listen(443, () => console.log(`App has been started on port 443...`))
   } catch (e) {
     console.log('Server Error', e.message)
     process.exit(1)

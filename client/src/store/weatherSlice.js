@@ -7,15 +7,7 @@ export const fetchSpotWeather = createAsyncThunk('weather/fetchSpotWeather', asy
   const { weather } = getState()
   const { activeSpotId, endpoint } = weather
   const { lat, lon } = weather.spots.find(spot => spot.id === activeSpotId).location
-  return await axios.request({
-    method: 'GET',
-    url: `https://weatherbit-v1-mashape.p.rapidapi.com/${endpoint}`,
-    params: { lat, lon, units: 'metric' },
-    headers: {
-      'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com',
-      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
-    },
-  })
+  return await axios.get('/api/weather', { params: { endpoint, lat, lon } })
 })
 
 const weatherSlice = createSlice({

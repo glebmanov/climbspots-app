@@ -1,5 +1,0 @@
-{
-  "portHttp": 80,
-  "portHttps": 443,
-  "baseUrl": "http://localhost:5511"
-}
