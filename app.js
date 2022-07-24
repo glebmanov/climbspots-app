@@ -3,18 +3,16 @@ const http = require('http')
 const https = require('https')
 const fs = require('fs')
 const path = require('path')
+const config = require('config')
 
+const app = express()
+const PORT_HTTP = config.get('portHttp')
+const PORT_HTTPS = config.get('portHttps')
 const options = {
   key: fs.readFileSync('cert/private.key'),
   cert: fs.readFileSync('cert/certificate.crt'),
   ca: fs.readFileSync('cert/certificate_ca.crt'),
 }
-
-const config = require('config')
-const PORT_HTTP = config.get('portHttp')
-const PORT_HTTPS = config.get('portHttps')
-
-const app = express()
 
 app.use((req, res, next) => (req.secure ? next() : res.redirect(301, `https://${req.headers.host}${req.url}`)))
 

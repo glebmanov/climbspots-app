@@ -1,18 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { setEndpoint } from '../store/weatherSlice';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { setEndpoint } from '../store/weatherSlice'
 
-import Button from './Button';
+import Button from './Button'
 
-import { uniqueId } from 'lodash';
+import { uniqueId } from 'lodash'
 
 const Endpoints = () => {
-  const currentEndpoint = useSelector(state => state.weather.endpoint);
+  const currentEndpoint = useSelector(state => state.weather.endpoint)
   const endpoints = [
     { name: 'Weekends', value: 'forecast/daily' },
     { name: 'For 5 days', value: 'forecast/3hourly' },
     { name: 'Current', value: 'current' },
-  ];
+  ]
 
   return (
     <div className='endpoints d-flex flex-row btn-group col-md-6 col-12'>
@@ -26,7 +26,7 @@ const Endpoints = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Endpoints;
+export default Endpoints

@@ -18,12 +18,24 @@ const SpotWeather = () => {
               <table className='table table-light table-borderless table-striped m-0 text-center align-middle'>
                 <thead>
                   <tr>
-                    <td><p>Datetime</p></td>
-                    <td><p>Description</p></td>
-                    <td><p></p></td>
-                    <td><p>T</p></td>
-                    <td><p>H</p></td>
-                    <td><p>W</p></td>
+                    <td>
+                      <p>Datetime</p>
+                    </td>
+                    <td>
+                      <p>Description</p>
+                    </td>
+                    <td>
+                      <p></p>
+                    </td>
+                    <td>
+                      <p>T</p>
+                    </td>
+                    <td>
+                      <p>H</p>
+                    </td>
+                    <td>
+                      <p>W</p>
+                    </td>
                   </tr>
                 </thead>
                 <tbody>

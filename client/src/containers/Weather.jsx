@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchSpotWeather } from '../store/weatherSlice';
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchSpotWeather } from '../store/weatherSlice'
 
-import Spots from '../components/Spots';
-import SpotWeather from '../components/SpotWeather';
-import Warning from '../components/Warning';
+import Spots from '../components/Spots'
+import SpotWeather from '../components/SpotWeather'
+import Warning from '../components/Warning'
 
 const Weather = () => {
-  const dispatch = useDispatch();
-  const activeSpotId = useSelector(state => state.weather.activeSpotId);
-  const endpoint = useSelector(state => state.weather.endpoint);
-  const error = useSelector(state => state.weather.error);
+  const dispatch = useDispatch()
+  const activeSpotId = useSelector(state => state.weather.activeSpotId)
+  const endpoint = useSelector(state => state.weather.endpoint)
+  const error = useSelector(state => state.weather.error)
 
   useEffect(() => {
-    if (activeSpotId) dispatch(fetchSpotWeather());
-  }, [dispatch, activeSpotId, endpoint]);
+    if (activeSpotId) dispatch(fetchSpotWeather())
+  }, [dispatch, activeSpotId, endpoint])
 
   return (
     <div className='weather-wrapper d-flex flex-column justify-content-center pb-3'>
@@ -26,7 +26,7 @@ const Weather = () => {
         <div className='spot-weather col-lg-10'>{error ? <Warning error={error} /> : <SpotWeather />}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Weather;
+export default Weather

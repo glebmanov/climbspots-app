@@ -1,12 +1,12 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { setActiveSpotId } from '../store/weatherSlice';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { setActiveSpotId } from '../store/weatherSlice'
 
-import Button from '../components/Button';
+import Button from '../components/Button'
 
 const Spots = () => {
-  const spots = useSelector(state => state.weather.spots);
-  const activeSpotId = useSelector(state => state.weather.activeSpotId);
+  const spots = useSelector(state => state.weather.spots)
+  const activeSpotId = useSelector(state => state.weather.activeSpotId)
 
   return (
     <>
@@ -21,7 +21,7 @@ const Spots = () => {
         />
       ))}
     </>
-  );
-};
+  )
+}
 
-export default Spots;
+export default Spots

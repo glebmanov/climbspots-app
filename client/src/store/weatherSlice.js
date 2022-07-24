@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios'
 
-import { isWeekend } from '../utils/date';
+import { isWeekend } from '../utils/date'
 
 export const fetchSpotWeather = createAsyncThunk('weather/fetchSpotWeather', async (_, { getState }) => {
-  const { weather } = getState();
-  const { activeSpotId, endpoint } = weather;
-  const { lat, lon } = weather.spots.find(spot => spot.id === activeSpotId).location;
+  const { weather } = getState()
+  const { activeSpotId, endpoint } = weather
+  const { lat, lon } = weather.spots.find(spot => spot.id === activeSpotId).location
   return await axios.request({
     method: 'GET',
     url: `https://weatherbit-v1-mashape.p.rapidapi.com/${endpoint}`,
@@ -15,8 +15,8 @@ export const fetchSpotWeather = createAsyncThunk('weather/fetchSpotWeather', asy
       'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com',
       'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
     },
-  });
-});
+  })
+})
 
 const weatherSlice = createSlice({
   name: 'weather',
@@ -39,33 +39,33 @@ const weatherSlice = createSlice({
   },
   reducers: {
     setEndpoint(state, action) {
-      state.endpoint = action.payload.endpoint;
+      state.endpoint = action.payload.endpoint
     },
     setActiveSpotId(state, action) {
-      state.activeSpotId = action.payload.activeSpotId;
+      state.activeSpotId = action.payload.activeSpotId
     },
   },
   extraReducers: {
     [fetchSpotWeather.pending]: state => {
-      state.status = 'loading';
-      state.error = null;
+      state.status = 'loading'
+      state.error = null
     },
     [fetchSpotWeather.fulfilled]: (state, { payload }) => {
-      state.status = 'resolved';
+      state.status = 'resolved'
       if (state.endpoint === 'forecast/daily') {
-        state.data = payload.data.data.filter(dataUnit => isWeekend(dataUnit.datetime));
+        state.data = payload.data.data.filter(dataUnit => isWeekend(dataUnit.datetime))
       } else {
-        state.data = payload.data.data;
+        state.data = payload.data.data
       }
     },
     [fetchSpotWeather.rejected]: (state, { error }) => {
-      state.status = 'rejected';
-      state.activeSpotId = null;
-      state.error = error.message;
+      state.status = 'rejected'
+      state.activeSpotId = null
+      state.error = error.message
     },
   },
-});
+})
 
-export const { setEndpoint, setActiveSpotId } = weatherSlice.actions;
+export const { setEndpoint, setActiveSpotId } = weatherSlice.actions
 
-export default weatherSlice.reducer;
+export default weatherSlice.reducer
